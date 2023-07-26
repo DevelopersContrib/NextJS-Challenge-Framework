@@ -1,36 +1,31 @@
 import Navigation from "@/components/includes/Navigation"
 import Footer from "@/components/includes/Footer"
 import TabSection from "@/components/includes/TabSection"
-import Image from "next/image"
+import TopChallengeSites from "@/components/TopChallengeSites"
+import BannerSection from "@/components/BannerSection"
 import { BsArrowRightCircle } from "react-icons/bs";
-import { getDomain } from '../lib/data';
+import { getDomain, getTopChallengeSites, getSponsorDetails, getLatestChallenges } from '../lib/data';
 
 export default async function Home() {
   const domain = getDomain();
+  const top_challenge_domains = await getTopChallengeSites();
+  const sponsor_count = await getSponsorDetails();
+  const latest_challenge = await getLatestChallenges();
+ 
+  const { data: { sponsor_details } } = sponsor_count;
+  const { count, amount } = sponsor_details[0];
 
   return (
     <>
       <section
         className='header-bg xl:tw-min-h-screen tw-bg-cover tw-bg-bottom tw-relative tw-text-white tw-pb-24'
       >
+        
         <Navigation />
-        <div className="container tw-flex tw-min-h-[calc(100vh-40px-6rem)] tw-items-center">
-          <div className="row">
-            <div className="col-xl-12 tw-flex tw-flex-col tw-text-center">
-              <h1 className="tw-font-bold tw-text-white sm:tw-text-5xl xl:tw-text-7xl tw-mb-6">
-                <span className="tw-text-[#cdcdcd]">Hey you!</span> Join and help us build the next challenge platform
-              </h1>
-              <h4 className="mb-4">
-                Build your own hackathon/challenge or game, explore challenges, learn new tech, and play to win cash and prizes!
-              </h4>
-              <div>
-                <a href="" className="btn btn-dark rounded-pill tw-bg-[#111] btn-lg">Get Started</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <BannerSection />
+       
       </section>
-      <section className="tw-py-24 tw-bg-white">
+      <section className="tw-py-24 tw-bg-white" id="play-section">
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
@@ -44,146 +39,7 @@ export default async function Home() {
           </div>
           <div className="row tw-justify-center">
             <div className="col-xl-10">
-              <div className="row gy-3">
-                <div className="col-xl-4">
-                  <a href="#" className="tw-block tw-py-[0.85rem] tw-mb-5 tw-shadow-[0px_0px_3px_#b4b5b7] tw-relative tw-rounded-lg tw-no-underline">
-                    <div className="tw-p-[.85rem_.85rem_.55rem]">
-                      <Image
-                        src="https://cdn.vnoc.com/logos/logo-MyChallenge-1.png"
-                        width={0}
-                        height={60}
-                        alt=""
-                        sizes="100vw"
-                        className="Image-fluid tw-w-full"
-                      />
-                    </div>
-                    <div className="tw-capitalize tw-text-center tw-text-2xl tw-bg-[#f6f7f9] tw-my-2 tw-p-3 tw-text-[#222]">mychallenge.com</div>
-                    <div className="row">
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">Leads</span>
-                      </div>
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">1261</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="col-xl-4">
-                  <a href="#" className="tw-block tw-py-[0.85rem] tw-mb-5 tw-shadow-[0px_0px_3px_#b4b5b7] tw-relative tw-rounded-lg tw-no-underline">
-                    <div className="tw-p-[.85rem_.85rem_.55rem]">
-                      <Image
-                        src="https://cdn.vnoc.com/logos/logo-MyChallenge-1.png"
-                        width={0}
-                        height={60}
-                        alt=""
-                        sizes="100vw"
-                        className="Image-fluid tw-w-full"
-                      />
-                    </div>
-                    <div className="tw-capitalize tw-text-center tw-text-2xl tw-bg-[#f6f7f9] tw-my-2 tw-p-3 tw-text-[#222]">mychallenge.com</div>
-                    <div className="row">
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">Leads</span>
-                      </div>
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">1261</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="col-xl-4">
-                  <a href="#" className="tw-block tw-py-[0.85rem] tw-mb-5 tw-shadow-[0px_0px_3px_#b4b5b7] tw-relative tw-rounded-lg tw-no-underline">
-                    <div className="tw-p-[.85rem_.85rem_.55rem]">
-                      <Image
-                        src="https://cdn.vnoc.com/logos/logo-MyChallenge-1.png"
-                        width={0}
-                        height={60}
-                        alt=""
-                        sizes="100vw"
-                        className="Image-fluid tw-w-full"
-                      />
-                    </div>
-                    <div className="tw-capitalize tw-text-center tw-text-2xl tw-bg-[#f6f7f9] tw-my-2 tw-p-3 tw-text-[#222]">mychallenge.com</div>
-                    <div className="row">
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">Leads</span>
-                      </div>
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">1261</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="col-xl-4">
-                  <a href="#" className="tw-block tw-py-[0.85rem] tw-mb-5 tw-shadow-[0px_0px_3px_#b4b5b7] tw-relative tw-rounded-lg tw-no-underline">
-                    <div className="tw-p-[.85rem_.85rem_.55rem]">
-                      <Image
-                        src="https://cdn.vnoc.com/logos/logo-MyChallenge-1.png"
-                        width={0}
-                        height={60}
-                        alt=""
-                        sizes="100vw"
-                        className="Image-fluid tw-w-full"
-                      />
-                    </div>
-                    <div className="tw-capitalize tw-text-center tw-text-2xl tw-bg-[#f6f7f9] tw-my-2 tw-p-3 tw-text-[#222]">mychallenge.com</div>
-                    <div className="row">
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">Leads</span>
-                      </div>
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">1261</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="col-xl-4">
-                  <a href="#" className="tw-block tw-py-[0.85rem] tw-mb-5 tw-shadow-[0px_0px_3px_#b4b5b7] tw-relative tw-rounded-lg tw-no-underline">
-                    <div className="tw-p-[.85rem_.85rem_.55rem]">
-                      <Image
-                        src="https://cdn.vnoc.com/logos/logo-MyChallenge-1.png"
-                        width={0}
-                        height={60}
-                        alt=""
-                        sizes="100vw"
-                        className="Image-fluid tw-w-full"
-                      />
-                    </div>
-                    <div className="tw-capitalize tw-text-center tw-text-2xl tw-bg-[#f6f7f9] tw-my-2 tw-p-3 tw-text-[#222]">mychallenge.com</div>
-                    <div className="row">
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">Leads</span>
-                      </div>
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">1261</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="col-xl-4">
-                  <a href="#" className="tw-block tw-py-[0.85rem] tw-mb-5 tw-shadow-[0px_0px_3px_#b4b5b7] tw-relative tw-rounded-lg tw-no-underline">
-                    <div className="tw-p-[.85rem_.85rem_.55rem]">
-                      <Image
-                        src="https://cdn.vnoc.com/logos/logo-MyChallenge-1.png"
-                        width={0}
-                        height={60}
-                        alt=""
-                        sizes="100vw"
-                        className="Image-fluid tw-w-full"
-                      />
-                    </div>
-                    <div className="tw-capitalize tw-text-center tw-text-2xl tw-bg-[#f6f7f9] tw-my-2 tw-p-3 tw-text-[#222]">mychallenge.com</div>
-                    <div className="row">
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">Leads</span>
-                      </div>
-                      <div className="col-sm-6 text-center">
-                        <span className="tw-p-[0.85rem] tw-text-[1.25rem] tw-font-semibold tw-uppercase tw-text-[#222222]">1261</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
+              <TopChallengeSites top_challenge_domains={top_challenge_domains}/>
             </div>
           </div>
         </div>
@@ -200,25 +56,25 @@ export default async function Home() {
               </div>
               <div className="col-xl-12 tw-text-center">
                 <h2 className="tw-font-bold">
-                  <span className="tw-font-extrabold">647</span> Challenges Sponsored Amounting To <span className="tw-font-extrabold">$7280</span>
+                  <span className="tw-font-extrabold">{count}</span> Challenges Sponsored Amounting To <span className="tw-font-extrabold">${amount}</span>
                 </h2>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="tw-py-24 lg:tw-pt-0 tw-bg-white">
+      <section className="tw-py-24 lg:tw-pt-0 tw-bg-white" id="sponsor-section">
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
               <div className="challenge-section-tabs">
-                <TabSection />
+                <TabSection challenges={latest_challenge} domain={domain}/>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="tw-py-24 tw-bg-[#fafafa]">
+      <section className="tw-py-24 tw-bg-[#fafafa]"id="earn-section">
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
