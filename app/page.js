@@ -1,12 +1,14 @@
+import HeaderWidget from '@/components/includes/HeaderWidget';
 import Navigation from "@/components/includes/Navigation"
 import Footer from "@/components/includes/Footer"
 import TabSection from "@/components/includes/TabSection"
 import TopChallengeSites from "@/components/TopChallengeSites"
 import BannerSection from "@/components/BannerSection"
 import { BsArrowRightCircle } from "react-icons/bs";
-import { getDomain, getTopChallengeSites, getSponsorDetails, getLatestChallenges } from '../lib/data';
+import { getDomain, getTopChallengeSites, getSponsorDetails, getLatestChallenges, getData } from '../lib/data';
 
 export default async function Home() {
+  const c = await getData();
   const domain = getDomain();
   const top_challenge_domains = await getTopChallengeSites();
   const sponsor_count = await getSponsorDetails();
@@ -17,6 +19,7 @@ export default async function Home() {
 
   return (
     <>
+      <HeaderWidget domain={domain} piwikId={c.data.piwikId} accountGA={c.data.accountGA} adsenseClientId={c.data.adsenseClientId}  />
       <section
         className='header-bg xl:tw-min-h-screen tw-bg-cover tw-bg-bottom tw-relative tw-text-white tw-pb-24'
       >
