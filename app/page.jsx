@@ -3,6 +3,7 @@ import Footer from "@/components/includes/Footer";
 import HeaderWidget from "@/components/includes/HeaderWidget";
 import Navigation from "@/components/includes/Navigation";
 import TabSection from "@/components/includes/TabSection";
+import Notification from "@/components/notification/Notification";
 import TopChallengeSites from "@/components/TopChallengeSites";
 import BlogList from "@/modules/blog/BlogList";
 import { BsArrowRightCircle } from "react-icons/bs";
@@ -206,6 +207,7 @@ export default async function Home() {
         </div>
       </section>
       <BlogList />
+      <Notification />
       <Footer domain={domain} />
     </>
   );
