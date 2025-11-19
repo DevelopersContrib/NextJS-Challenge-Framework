@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css'
 import { getData } from '@/lib/data'
 export const dynamic = 'force-dynamic'
+import First100FoundersModalWrapper from "@/components/First100FoundersModalWrapper";
 
 // Async function to generate SEO metadata
 export async function generateMetadata() {
@@ -48,6 +49,7 @@ export async function generateMetadata() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <First100FoundersModalWrapper />
       <body >{children}</body>
     </html>
   )
