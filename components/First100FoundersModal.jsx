@@ -157,25 +157,25 @@ export const First100FoundersModal = ({
   // Default benefits
   const defaultBenefits = benefits || [
     { 
-      icon: <Rocket className="w-8 h-8" />, 
+      icon: <Rocket className="w-8 h-8 text-white" />, 
       text: 'Full platform access on January 15, 2026', 
       color: 'text-blue-300', 
       bg: 'from-blue-500/20 to-cyan-500/20' 
     },
     { 
-      icon: <Zap className="w-8 h-8" />, 
+      icon: <Zap className="w-8 h-8 text-white" />, 
       text: 'Auto-built contractor website with ALL AI agents', 
       color: 'text-purple-300', 
       bg: 'from-purple-500/20 to-pink-500/20' 
     },
     { 
-      icon: <Crown className="w-8 h-8" />, 
+      icon: <Crown className="w-8 h-8 text-white" />, 
       text: 'Early access to DomainFund Secret Auction', 
       color: 'text-yellow-300', 
       bg: 'from-yellow-500/20 to-orange-500/20' 
     },
     { 
-      icon: <Sparkles className="w-8 h-8" />, 
+      icon: <Sparkles className="w-8 h-8 text-white" />, 
       text: 'Founders Badge & exclusive community access', 
       color: 'text-pink-300', 
       bg: 'from-pink-500/20 to-red-500/20' 
@@ -362,7 +362,7 @@ export const First100FoundersModal = ({
                   key={index}
                   className="tw-bg-white tw-bg-opacity-5 tw-rounded-2xl tw-shadow-lg tw-border tw-border-white/20 tw-px-6 tw-py-8 tw-flex tw-items-center tw-space-x-4 tw-transition-all tw-duration-300 hover:tw-scale-105 hover:tw-shadow-2xl"
                 >
-                  <div className={`tw-flex-shrink-0 ${benefit.color ? 'tw-' + benefit.color : 'tw-text-white'} tw-p-3 tw-bg-white/10 tw-rounded-xl tw-shadow-md`}>
+                  <div className="tw-flex-shrink-0 tw-p-3 tw-bg-white/10 tw-rounded-xl tw-shadow-md">
                     {benefit.icon}
                   </div>
                   <div>
@@ -375,17 +375,20 @@ export const First100FoundersModal = ({
 
           {/* CTA Buttons - Larger and more prominent */}
           <div className="tw-flex tw-flex-col sm:tw-flex-row tw-items-center tw-justify-center tw-gap-6 tw-mt-8">
-            <button
-              onClick={handleNavigate}
-              className="tw-group tw-px-12 tw-py-6 tw-text-white tw-font-bold tw-text-xl md:tw-text-2xl tw-rounded-2xl tw-transition-all tw-duration-300 tw-shadow-2xl tw-transform hover:tw-scale-110 tw-flex tw-items-center tw-space-x-3 tw-w-full sm:tw-w-auto tw-justify-center"
-              style={{
-                background: 'linear-gradient(to right, rgb(147, 51, 234), rgb(37, 99, 235), rgb(79, 70, 229))',
-                border: 'none',
-              }}
+            <a
+            href="https://www.ventureos.com/first100founders"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tw-group tw-px-12 tw-py-6 tw-bg-gradient-to-r tw-from-purple-600 tw-via-blue-600 tw-to-indigo-600 tw-text-white tw-font-bold tw-text-xl md:tw-text-2xl tw-rounded-2xl hover:tw-from-purple-700 hover:tw-via-blue-700 hover:tw-to-indigo-700 tw-transition-all tw-duration-300 tw-shadow-2xl hover:tw-shadow-purple-500/50 tw-transform hover:tw-scale-110 tw-flex tw-items-center tw-space-x-3 tw-w-full sm:tw-w-auto tw-justify-center"
+            style={{
+            background: 'linear-gradient(to right, #9333ea, #2563eb, #4f46e5)',
+            border: 'none',
+            textDecoration: 'none',
+            }}
             >
-              <span>{content?.ctaText || 'Reserve My Founder Spot'}</span>
-              <ArrowRight className="tw-w-6 tw-h-6 tw-group-hover:tw-translate-x-2 tw-transition-transform" />
-            </button>
+            <span>{content?.ctaText || 'Reserve My Founder Spot'}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="tw-w-6 tw-h-6 tw-group-hover:tw-translate-x-2 tw-transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
             <button
               onClick={handleClose}
               className="tw-px-10 tw-py-6 tw-bg-white/10 tw-backdrop-blur-md tw-text-white tw-font-semibold tw-text-lg tw-rounded-2xl hover:tw-bg-white/20 tw-border tw-border-white/30 tw-transition-all tw-w-full sm:tw-w-auto"
