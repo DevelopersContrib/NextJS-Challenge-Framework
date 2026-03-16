@@ -1,36 +1,103 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-surface: #0c0a14;
+  --color-accent: #00f6ff;
+  --color-muted: rgba(255, 255, 255, 0.7);
+}
 
 body {
   font-family: 'Montserrat', sans-serif !important;
 }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-  font-family: 'Montserrat', sans-serif !important;
+/* No text underline on links and buttons */
+a, button {
+  text-decoration: none !important;
+}
+a:hover, a:focus, button:hover, button:focus {
+  text-decoration: none !important;
 }
 
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif !important;
+  letter-spacing: -0.03em;
+}
+
+/* News ticker */
+.ticker-track {
+  animation: ticker-scroll 32s linear infinite;
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+.ticker-fade-edges {
+  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Section headings with gradient underline */
+.section-heading {
+  letter-spacing: -0.03em;
+  position: relative;
+  display: inline-block;
+}
+.section-heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 56px;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #a78bfa);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+/* Hero: overlay uses theme color #0f0e17 (15,14,23) so it matches dark sections below */
 .header-bg {
-  background-image: -o-linear-gradient(top, rgba(81, 80, 80, 0.52), rgba(9, 9, 9, 0.73)),
+  background-image:
+    linear-gradient(180deg, rgba(15, 14, 23, 0.92) 0%, rgba(15, 14, 23, 0.82) 50%, rgba(15, 14, 23, 0.95) 100%),
     url(https://cdn.vnoc.com/desc/bg-challenge-4-min.png);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(81, 80, 80, 0.52)), to(rgba(9, 9, 9, 0.73))),
-    url(https://cdn.vnoc.com/desc/bg-challenge-4-min.png);
-  background-image: linear-gradient(to bottom, rgba(81, 80, 80, 0.52), rgba(9, 9, 9, 0.73)),
-    url(https://cdn.vnoc.com/desc/bg-challenge-4-min.png);
+  background-size: cover;
+  background-position: center bottom;
+}
+
+/* Hero title: solid white + strong shadow so it's readable on any background */
+.hero-title {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.4);
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 1),
+    0 0 6px rgba(0, 0, 0, 0.9),
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 20px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Subtle grid for sections (dark variant for play section) */
+.bg-grid-subtle {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Top Challenge Sites: force 3 cards per row from 576px (high specificity so it always wins) */
+#play-section .top-challenge-sites-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 576px) {
+  #play-section .top-challenge-sites-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
 }
 
 .text-ripple:before {
@@ -138,6 +205,7 @@ h6,
 .challengeTabNav {
   border-bottom: none !important;
   margin-bottom: 0 !important;
+  padding: 1.25rem 2rem 0 !important;
 }
 
 .challengeTabNav .nav-link {
@@ -162,6 +230,64 @@ h6,
 .challenge-section-tabs .tab-pane {
   padding: 2rem;
   background-color: #f9f4f4;
+}
+
+/* Dark theme for tab section (when wrapper has .challenge-section-tabs-dark) */
+.challenge-section-tabs-dark .tab-pane {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.challenge-section-tabs-dark .challengeTabNav .nav-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.challenge-section-tabs-dark .challengeTabNav .nav-link:hover {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.challenge-section-tabs-dark .challengeTabNav .nav-link.active {
+  color: #fff !important;
+  background-color: rgba(99, 102, 241, 0.9) !important;
+  border-color: rgb(99, 102, 241) !important;
+}
+
+.challenge-section-tabs-dark .list-group-item {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.challenge-section-tabs-dark .list-group-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.challenge-section-tabs-dark .list-group-item h6,
+.challenge-section-tabs-dark .tab-pane h3 {
+  color: #fff;
+}
+
+.challenge-section-tabs-dark .list-group-item p.mb-0.opacity-75,
+.challenge-section-tabs-dark .tab-pane .opacity-75 {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+.challenge-section-tabs-dark .list-group-item small {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.challenge-section-tabs-dark .tab-pane .btn-dark.rounded-pill {
+  background-color: rgb(99, 102, 241) !important;
+  border-color: rgb(99, 102, 241) !important;
+  color: #fff !important;
+}
+
+.challenge-section-tabs-dark .list-group-item .btn-small-view {
+  background-color: rgba(0, 246, 255, 0.2) !important;
+  color: #00f6ff !important;
+  border: 1px solid rgba(0, 246, 255, 0.4);
 }
 
 .headingNavTitle {
@@ -193,7 +319,7 @@ h6,
 }
 
 .fheader-script .lead-top-widget{
-  top: 33px;
+  top: 2.25rem; /* 36px – matches NewsTicker height */
 }
 
 .blink {

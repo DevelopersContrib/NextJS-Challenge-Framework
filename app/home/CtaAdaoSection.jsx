@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const CtaAdaoSection = () => {
   return (
     <>
-      <section className="tw-w-full tw-bg-[#020817] tw-py-24 min-h-[532px] tw-z-10">
+      <section className="tw-w-full tw-bg-[#0F0E17] tw-py-24 min-h-[532px] tw-z-10">
         
         <div className="container">
           <motion.div

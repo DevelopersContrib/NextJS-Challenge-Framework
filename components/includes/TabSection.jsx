@@ -13,7 +13,7 @@ const TabSection = ({challenges, domain}) => {
 			className="mb-3 challengeTabNav tw-justify-center"
 		>
 			<Tab eventKey="createChallenge" title={<span className="headingNavTitle"><span>Create Challenge</span> <span><FaAnglesDown /></span></span>}>
-				<h3 className="mb-3">
+				<h3 className="mb-3 tw-text-white">
 					Create Your Challenge
 				</h3>
 				<div className="list-group">
@@ -95,7 +95,7 @@ const TabSection = ({challenges, domain}) => {
 				</div>
 			</Tab>
 			<Tab eventKey="sponsorChallenge" title={<span className="headingNavTitle"><span>Sponsor Challenge</span> <span><FaAnglesDown /></span></span>}>
-				<h3 className="mb-3">
+				<h3 className="mb-3 tw-text-white">
 					Sponsor Challenge
 				</h3>
 				<div className="list-group">
@@ -108,7 +108,7 @@ const TabSection = ({challenges, domain}) => {
 									<p className="mb-0 opacity-75">{striptags(challenge.ChallengeDesc, [], '\n', true).replace(/<\/?[^>]+(>|$)/g, '').replace(/&nbsp;/g, ' ')}</p>
 								</div>
 								<small className="mt-2 text-nowrap">
-									<a href={`https://www.contrib.com/challenge/details/`+challenge.ChallengeId+`/`+challenge.Slug} className="btn rounded-pill tw-bg-[#222!important] tw-text-[#fff!important] tw-p-[.35em_.65em!important] btn-small-view" target="_blank"> View Challenge </a>
+									<a href={`https://www.contrib.com/challenge/details/`+challenge.ChallengeId+`/`+challenge.Slug} className="btn rounded-pill tw-p-[.35em_.65em!important] btn-small-view" target="_blank"> View Challenge </a>
 								</small>
 							</div>
 						</div>
