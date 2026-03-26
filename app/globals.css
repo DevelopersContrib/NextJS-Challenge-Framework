@@ -61,23 +61,33 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 /* Hero: overlay uses theme color #0f0e17 (15,14,23) so it matches dark sections below */
 .header-bg {
   background-image:
-    linear-gradient(180deg, rgba(15, 14, 23, 0.92) 0%, rgba(15, 14, 23, 0.82) 50%, rgba(15, 14, 23, 0.95) 100%),
+    radial-gradient(ellipse 120% 80% at 50% -30%, rgba(0, 246, 255, 0.12) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(15, 14, 23, 0.88) 0%, rgba(15, 14, 23, 0.78) 45%, rgba(15, 14, 23, 0.96) 100%),
     url(https://cdn.vnoc.com/desc/bg-challenge-4-min.png);
   background-size: cover;
   background-position: center bottom;
 }
 
-/* Hero title: solid white + strong shadow so it's readable on any background */
+/* Hero headline: light shadow for legibility without heavy "glow" */
 .hero-title {
-  color: #ffffff;
-  -webkit-text-fill-color: #ffffff;
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.4);
-  text-shadow:
-    0 0 2px rgba(0, 0, 0, 1),
-    0 0 6px rgba(0, 0, 0, 0.9),
-    0 2px 4px rgba(0, 0, 0, 0.8),
-    0 4px 20px rgba(0, 0, 0, 0.7),
-    0 0 40px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.045em;
+}
+
+.hero-title-lead {
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22), 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Extra line-height + padding: bg-clip text can crop descenders (g, y, p) */
+.hero-title-accent {
+  display: block;
+  line-height: 1.18;
+  padding-bottom: 0.14em;
+  background: linear-gradient(120deg, #ffffff 0%, #7dd3fc 40%, #a5b4fc 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.35));
 }
 
 /* Subtle grid for sections (dark variant for play section) */
