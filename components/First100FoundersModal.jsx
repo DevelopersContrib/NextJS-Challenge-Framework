@@ -321,7 +321,7 @@ export const First100FoundersModal = ({
         </button>
 
         {/* Main Content */}
-        <div className="max-w-6xl w-full space-y-8 md:space-y-12" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <div className="max-w-6xl w-full space-y-8 md:space-y-12">
           {/* Header Section */}
           <div className="text-center space-y-6">
             <h1 className="tw-text-5xl md:tw-text-6xl lg:tw-text-7xl tw-font-extrabold tw-mb-6 tw-leading-tight">

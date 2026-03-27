@@ -1,8 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './globals.css'
-import { getData } from '@/lib/data'
-export const dynamic = 'force-dynamic'
-import First100FoundersModalWrapper from "@/components/First100FoundersModalWrapper";
+import './globals.css';
+import First100FoundersModalWrapper from '@/components/First100FoundersModalWrapper';
+import { getData } from '@/lib/data';
+import { Inter } from 'next/font/google';
+
+export const dynamic = 'force-dynamic';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 // Async function to generate SEO metadata
 export async function generateMetadata() {
@@ -45,12 +53,11 @@ export async function generateMetadata() {
   };
 }
 
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <First100FoundersModalWrapper />
-      <body >{children}</body>
+      <body>{children}</body>
     </html>
-  )
+  );
 }
